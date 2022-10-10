@@ -12,13 +12,10 @@ import { UsersModule } from './users/users.module';
             envFilePath: `.${process.env.NODE_ENV}.env`
         }),
         SequelizeModule.forRoot({
-          dialect: 'postgres',
-          host: process.env.POSTGRESS_HOST,
-          port: Number(process.env.POSTGRESS_PORT),
-          username: process.env.POSTGRESS_USER,
-          password: process.env.POSTGRESS_PASSWORD,
-          database: process.env.POSTGRESS_DB,
-          models: [User],
+          url: process.env.DATABASE_URL,
+          type: 'postgres',
+          entities: ['dist/**/*.entity{.ts,.js}'],
+          synchronize: true, // This for development
           autoLoadModels: true,
         }),
         UsersModule,
