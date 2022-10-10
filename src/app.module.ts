@@ -3,15 +3,19 @@ import { SequelizeModule } from "@nestjs/sequelize";
 import { ConfigModule } from '@nestjs/config';
 import { User } from "./users/users.model";
 import { UsersModule } from './users/users.module';
-import { configService } from "./config/config.service";
-
 
 @Module({
     controllers: [],
     providers: [],
     imports: [
-        ConfigModule.forRoot(),
-        SequelizeModule.forRoot(configService.getTypeOrmConfig()),
+        ConfigModule.forRoot({
+            envFilePath: `.${process.env.NODE_ENV}.env`
+        }),
+        SequelizeModule.forRoot({
+          uri: process.env.DATABASE_URL,
+          dialect: 'postgres',
+          autoLoadModels: true,
+        }),
         UsersModule,
       ],
 })
