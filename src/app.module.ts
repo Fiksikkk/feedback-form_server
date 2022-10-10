@@ -8,9 +8,7 @@ import { UsersModule } from './users/users.module';
     controllers: [],
     providers: [],
     imports: [
-        ConfigModule.forRoot({
-            envFilePath: `.${process.env.NODE_ENV}.env`
-        }),
+        ConfigModule.forRoot(),
         SequelizeModule.forRoot({
           url: process.env.DATABASE_URL,
           type: 'postgres',
