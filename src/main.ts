@@ -6,14 +6,14 @@ async function start() {
   const PORT = process.env.PORT || 5000;
   const app = await NestFactory.create(AppModule);
 
-  const config = new DocumentBuilder()
+  const configDoc = new DocumentBuilder()
   .setTitle('Lesson about backend')
   .setDescription('Documentation REST API')
   .setVersion('1.0.0')
   .addTag('Fiksik')
   .build()
 
-  const document = SwaggerModule.createDocument(app, config);
+  const document = SwaggerModule.createDocument(app, configDoc);
   SwaggerModule.setup('/api/docs', app, document)
 
   await app.listen(PORT, () => console.log(`Server started on port = ${PORT}`));
