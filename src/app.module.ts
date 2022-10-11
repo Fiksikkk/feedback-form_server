@@ -8,12 +8,13 @@ import { UsersModule } from './users/users.module';
     controllers: [],
     providers: [],
     imports: [
-        ConfigModule.forRoot({
-            envFilePath: `.${process.env.NODE_ENV}.env`
-        }),
+        ConfigModule.forRoot(
+          // { envFilePath: `.${process.env.NODE_ENV}.env`}
+            ),
         SequelizeModule.forRoot({
           uri: process.env.DATABASE_URL,
           dialect: 'postgres',
+          // port: 5432,
           synchronize: true,
           autoLoadModels: true,
         }),
