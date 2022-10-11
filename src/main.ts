@@ -5,7 +5,7 @@ import {DocumentBuilder, SwaggerModule} from "@nestjs/swagger"
 async function start() {
   const PORT = process.env.PORT || 5000;
   const app = await NestFactory.create(AppModule);
-
+  app.enableCors()
   const configDoc = new DocumentBuilder()
   .setTitle('Feedback form by Fiksik')
   .setDescription('Documentation REST API')

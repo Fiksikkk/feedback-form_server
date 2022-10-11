@@ -1,8 +1,9 @@
-import { Controller, Post, Body, Get } from '@nestjs/common';
+import { Controller, Post, Body, Get, UsePipes} from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './users.model';
 import { UsersService } from './users.service';
 import {ApiOperation, ApiResponse} from '@nestjs/swagger'
+import { ValidationPipe } from 'src/pipe/validation.pipe';
 
 @Controller('/api')
 export class UsersController {
@@ -10,6 +11,7 @@ export class UsersController {
 
     @ApiOperation({summary: 'Create users request'})
     @ApiResponse({status:200, type: User})
+    @UsePipes(ValidationPipe)
     @Post('/users')
     create(@Body() userDto: CreateUserDto) {
         return this.usersServise.createUser(userDto);
