@@ -14,6 +14,7 @@ import { UsersModule } from './users/users.module';
         SequelizeModule.forRoot({
           uri: process.env.DATABASE_URL,
           dialect: 'postgres',
+          synchronize: true,
           autoLoadModels: true,
         }),
         UsersModule,
