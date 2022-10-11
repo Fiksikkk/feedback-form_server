@@ -7,7 +7,7 @@ async function start() {
   const app = await NestFactory.create(AppModule);
 
   const configDoc = new DocumentBuilder()
-  .setTitle('Lesson about backend')
+  .setTitle('Feedback form by Fiksik')
   .setDescription('Documentation REST API')
   .setVersion('1.0.0')
   .addTag('Fiksik')
